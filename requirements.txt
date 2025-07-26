@@ -2,3 +2,4 @@ streamlit
 firebase-admin
 gspread
 pandas
+oauth2client
