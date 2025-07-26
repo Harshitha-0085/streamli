@@ -49,6 +49,68 @@ with st.form("story_form"):
 # Display (optional preview)
 st.markdown("---")
 st.subheader("📚 Latest Festival Vibes (Top 3)")
+ # 🌟 Static Festival Descriptions Section
+st.markdown("## 📅 Telugu Festivals & Traditions")
+
+festival_details = [
+    {
+        "name": "Sankranti",
+        "description": "Harvest festival celebrated with rangoli (muggulu), kites, and sweets like ariselu and til laddoo.",
+    },
+    {
+        "name": "Bathukamma",
+        "description": "Floral festival honoring Goddess Gauri. Women gather with flower stacks and sing traditional songs.",
+    },
+    {
+        "name": "Bonalu",
+        "description": "Goddess Mahakali is worshipped with bonam (meal) offerings in decorated pots.",
+    },
+    {
+        "name": "Ugadi",
+        "description": "Telugu New Year marked by Panchanga Sravanam and tasting Ugadi Pachadi – a mix of six flavors.",
+    },
+    {
+        "name": "Dasara (Vijayadashami)",
+        "description": "Celebrates the victory of good over evil. Ends the Navaratri season with Ayudha Puja and Shami leaf exchange.",
+    },
+    {
+        "name": "Deepavali",
+        "description": "Festival of Lights with diyas, crackers, new clothes, and sweets. Celebrates the return of Lord Rama.",
+    },
+    {
+        "name": "Sri Rama Navami",
+        "description": "Birth of Lord Rama. Celebrated with special pujas and recitation of Ramayana.",
+    },
+    {
+        "name": "Varalakshmi Vratam",
+        "description": "Married women worship Goddess Lakshmi for health, wealth, and family well-being.",
+    },
+    {
+        "name": "Ganesh Chaturthi (Vinayaka Chavithi)",
+        "description": "Lord Ganesha’s birthday. Celebrated with clay idols, modak, and community immersion events.",
+    },
+    {
+        "name": "Holi",
+        "description": "Festival of colors, symbolizing the arrival of spring. Families play with vibrant powders and water.",
+    },
+    {
+        "name": "Karthika Deepam",
+        "description": "Devotees light oil lamps to honor Lord Shiva and Lord Vishnu during Karthika Masam.",
+    },
+    {
+        "name": "Hanuman Jayanti",
+        "description": "Celebrates the birth of Lord Hanuman, the symbol of strength and devotion.",
+    },
+    {
+        "name": "Krishnashtami",
+        "description": "Marks the birth of Lord Krishna. Celebrated with poojas, stories of Krishna, and butter delicacies.",
+    }
+]
+
+for fest in festival_details:
+    st.markdown(f"### 🪔 {fest['name']}")
+    st.write(fest["description"])
+    st.markdown("---")
 
 try:
     sheet = connect_to_sheet()
@@ -65,3 +127,18 @@ try:
         st.info("No stories submitted yet. Be the first!")
 except:
     st.stop()
+
+# 🎉 Festival Image Gallery (Local Images)
+import os
+from PIL import Image
+
+st.subheader("🖼 Festival Gallery")
+
+assets_path = "assets"
+image_files = [f for f in os.listdir(assets_path) if f.endswith(('.png', '.jpg', '.jpeg'))]
+
+for img in image_files:
+    img_path = os.path.join(assets_path, img)
+    image = Image.open(img_path)
+    st.image(image, caption=img.split('.')[0].replace('_', ' ').title(), use_column_width=True)
+
