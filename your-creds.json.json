@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "festivevibes-467106",
+  "private_key_id": "47b9985ada9d3fa366e9478a04b488da640223a1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCYxS1x3rrSryfC\nArfgnEbf0GoqecZfy4uu6CkRjzQIoua7tqxy+/3RbtJ864BFZAbPDn6VFaSTAivW\n5Z+hrEIN5b9PVmt7dOFqQFd9Hee/k1nRfyKtCKSCZe10QzQaPVkU/DQmoCom2Rif\n5SSiiWl/bDpBX3xUQ3MfBK/dXz2fhcFcFw6eRA6fsfJ8JcDZbYgJ7nGI3cR8PzKS\nvhrm3ivFmDkdALmchYfDHS9DrpdvbpPtWpcBeOFTHr4dKeBOFCIXsb/RA7iRyZbE\nHxLZKX/GMsnudHnVeSZJbG8ShgdefsqCFYQCTfEJKJFYY2gFxR9BakSp/QWy7+0T\njuYLSVF/AgMBAAECggEARAntR32vLw4bYujbBAoV9rBX2DsMArYgq/Fx+QQSZJZI\ntOmSvFNGo/P7gu9P3ZfDAIywC63r8h1RcRArnFGfyZi9L5SJoh5YFn45eNvMzyHN\nKuS4iOAEhJ7otpMHrXgNKK96eolyvIKL2Qqw2kLg3YNSHrNsKAsyRmpL+Qfl5hl3\nxDe0j7IpC3t+AGgf7dhMlEaB7kwfczLTL31xVyWBPODaR1q8/6vNE8IfVzCk7z7i\n2Vzwit/ge4WR2Z4qpETyZ6O45+9DBzW9BsT3azoNz/BIjryElTkmViAXwonKnSfc\nr8uHTXLSKFRZz3P4zcRckMxC+S8P+Ambz+l8FoYFwQKBgQDOxftuxuPDlNqR/mYh\nR3v+fUM5//m7tuFbXBVjz2KBThAgMzVzh5LFuEgAIeQtgTJ8T5vTF4J0311/Xydy\n3KuOuP3lEERTxR99weTkIk4VG3Fjl5QiHaX5ToWE11Ho08/0ybzu3YqXSYHxquxx\niak+Zyf3pFanoJ93bGXlLgs+pwKBgQC9I+rsJuKeoWmW59sOIle/ZY8zkDR/xzS8\n2I+ooeUxIRqlYieS5Gvtg49ghGir9SXL1b1GbImaIqkGnd+WgPQupEnUQ/3Hvyaa\n2Jn5huLGZC9zVCFkcBmpQAd0kz+C2l6egKrlH8M/sIIVauWTtg4+5lH8JK4uS+gW\n2HmxrplJaQKBgDjV1pzGcoip+8IxaSUwnvZ+u+HPaHeedydDkmWS9YKRUIFpUgHl\nfAR4+OGAb1XKs3PT9gL57VPuqaZ/IzrBSS67zp4N8JoODu/kQeQrQccveeVkHsWZ\n3KtAWBcBkHQs9HZWlWYa4yNegydIUiGLM0gB1syNEXyV+/85fnCWTWT1AoGBAI/M\nWPVF8xGron2KtS6fyZrIegE359Il/+B7vWz1+SxLANkwMOorJCsl1MIKqRHjheLd\nE9QQ/OTk6SEQskbYr80uNrtdHfrZR15+w0HE3XD8Bl9mXSThXYEiHwjwUl8H6twS\n8trUNTuc1Km35edRiK8lqLtMn+iu6TtFRfBi0EPRAoGANyebY98fCg2UrKNHyegp\nhDfTEQU4T9YIUO++OFu23QoitOz/j6l08SyMlGcLOyDzDiENVwAByHVpK7b+LLdl\n52ZdLUU5vsoq77WDt0aSmNEhqwzZq042U1vN0WBfC14KjGeBCdnQ+QZ4dVT2R0Se\nFOlQlQPdhUA60+JX0Ayavsw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "festivalvibe-app@festivevibes-467106.iam.gserviceaccount.com",
+  "client_id": "113819670406697992925",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/festivalvibe-app%40festivevibes-467106.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
