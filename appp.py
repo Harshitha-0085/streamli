@@ -1,67 +1,67 @@
 import streamlit as st
+import pandas as pd
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
-st.set_page_config(page_title="FestiveVibe", layout="wide")
+# Setup connection to Google Sheet (if needed)
+@st.cache_resource
+def connect_to_sheet():
+    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    creds = ServiceAccountCredentials.from_json_keyfile_name("your-creds.json", scope)
+    client = gspread.authorize(creds)
+    sheet = client.open("FestivalVibeSubmissions").sheet1
+    return sheet
 
-st.title("🎉 FestiveVibe: Celebrating the Traditions of Telugu States")
-
+# Header
+st.set_page_config(page_title="FestivalVibe", page_icon="🌸")
 st.markdown("""
-Welcome to **FestiveVibe** – a cultural hub to explore and share the beautiful festival traditions of **Andhra Pradesh** and **Telangana**.
-""")
+# 🌸 FestivalVibe — Celebrate Telugu Culture With Us! 🎉
 
-# Sidebar filters
-st.sidebar.header("🔍 Filter by Region")
-region = st.sidebar.selectbox("Choose Region", ["All", "Andhra Pradesh", "Telangana"])
+🪔 **What’s your favorite festival memory?**  
+🌼 **How does your family celebrate Bathukamma, Bonalu, or Sankranti?**  
+📸 Upload your stories, photos, or even your grandma’s secret recipes on **FestivalVibe** – a fun app built to preserve and celebrate the beautiful traditions of **Andhra Pradesh & Telangana**!
 
-# Festivals data
-festivals = {
-    "Sankranti": {
-        "state": "Both",
-        "description": "Sankranti is celebrated with rangoli (muggulu), bhogi fire, and kite flying.",
-    },
-    "Bathukamma": {
-        "state": "Telangana",
-        "description": "A floral festival where women sing and dance around beautiful flower stacks.",
-    },
-    "Bonalu": {
-        "state": "Telangana",
-        "description": "Goddess Mahakali festival where devotees offer cooked rice and dance.",
-    },
-    "Ugadi": {
-        "state": "Both",
-        "description": "New Year festival with Ugadi pachadi and rituals.",
-    },
-    "Vinayaka Chavithi": {
-        "state": "Both",
-        "description": "Lord Ganesha is worshipped with clay idols, sweets and cultural events.",
-    },
-    "Dasara": {
-        "state": "Both",
-        "description": "Also known as Dussehra – celebration of good over evil with processions.",
-    }
-}
+💬 *Speak in your language. Share your vibes. Make your culture timeless.*
 
-# Display festival cards
-st.subheader("🌟 Explore Festivals")
-for fest, details in festivals.items():
-    if region == "All" or region in details["state"]:
-        with st.expander(f"🎊 {fest}"):
-            st.write(details["description"])
-            st.image("https://source.unsplash.com/800x400/?festival,india", use_column_width=True)
+👇 **Submit your festival story today!**
+""", unsafe_allow_html=True)
 
-# User contribution section
-st.subheader("📝 Add Your Tradition")
-
-with st.form("submit_tradition"):
+# Form
+st.subheader("📝 Share Your Festival Story")
+with st.form("story_form"):
     name = st.text_input("Your Name")
-    festival = st.selectbox("Festival", list(festivals.keys()))
-    story = st.text_area("Describe how you celebrate it in your town or family.")
-    photo = st.file_uploader("Upload a Photo (optional)", type=["jpg", "jpeg", "png"])
+    festival = st.selectbox("Choose Festival", ["Ugadi", "Bonalu", "Sankranti", "Bathukamma", "Other"])
+    story = st.text_area("Your Memory / Ritual / Recipe")
+    image_url = st.text_input("Image Link (optional)")
     submitted = st.form_submit_button("Submit")
 
     if submitted:
-        st.success("🎉 Your tradition has been submitted! Thank you for preserving our culture!")
+        if name and story:
+            try:
+                sheet = connect_to_sheet()
+                sheet.append_row([name, festival, story, image_url])
+                st.success("Your story has been added to FestivalVibe! 🌟")
+            except:
+                st.warning("Error saving to Google Sheet. Please check credentials.")
+        else:
+            st.warning("Please fill in all required fields.")
 
-# Footer
+# Display (optional preview)
 st.markdown("---")
-st.markdown("© 2025 FestiveVibe • Built with ❤️ using Streamlit")
+st.subheader("📚 Latest Festival Vibes (Top 3)")
 
+try:
+    sheet = connect_to_sheet()
+    data = sheet.get_all_records()
+    if data:
+        df = pd.DataFrame(data)[::-1].head(3)  # Latest 3
+        for i, row in df.iterrows():
+            st.markdown(f"### ✨ {row['festival']} by {row['name']}")
+            st.write(row['story'])
+            if row['image_url']:
+                st.image(row['image_url'], use_column_width=True)
+            st.markdown("---")
+    else:
+        st.info("No stories submitted yet. Be the first!")
+except:
+    st.stop()
